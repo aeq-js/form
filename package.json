@@ -1,0 +1,19 @@
+{
+  "name": "@aeq/form",
+  "version": "0.0.1",
+  "description": "Object for working with frontend forms",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aeq-js/form.git"
+  },
+  "author": "D3-FC <D3-FC@mail.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aeq-js/form/issues"
+  },
+  "homepage": "https://github.com/aeq-js/form#readme"
+}
