@@ -128,7 +128,7 @@ export class Form<T = any> {
   async run (...args: any): Promise<any> {
     try {
       this.clearErrors()
-      const result = await this.command.run(...args)
+      const result = await this.command.run(this.data, ...args)
       if (this._resetOnSuccess) this.restoreFromSnapshot()
       this.saveSnapshot()
       return result
