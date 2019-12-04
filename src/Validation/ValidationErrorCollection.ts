@@ -2,7 +2,7 @@ import { PropertyError } from './PropertyError'
 
 type Dto = { [key: string]: any }
 
-export default class ValidationErrorCollection {
+export class ValidationErrorCollection {
   errors: PropertyError[] = []
 
   constructor (data = {}) {

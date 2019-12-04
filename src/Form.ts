@@ -1,14 +1,14 @@
 import { CommandContract } from './CommandContract'
 import { HoldExecutor } from '@aeq/executors'
 import { FormError } from './Validation/FormError'
-import ValidationErrorCollection from './Validation/ValidationErrorCollection'
+import {ValidationErrorCollection} from './Validation/ValidationErrorCollection'
 import clone from 'clone'
 
 type MapErrorHandler = (e: any) => FormError
 type Handler = (...args: any[]) => Promise<any>
 type Config = { mapError: (e: Error) => FormError }
 
-export class FormCommand<T = any> {
+export class Form<T = any> {
   private command: CommandContract
   public data: T
   private snapshot: any = null
@@ -24,7 +24,7 @@ export class FormCommand<T = any> {
   }
 
   static createEmpty<T = any> (handler: Handler, data?: T, config?: Config) {
-    const form = new FormCommand(
+    const form = new Form(
       handler,
       data,
       config

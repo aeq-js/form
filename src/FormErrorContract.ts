@@ -1,4 +1,4 @@
-export default interface FormErrorContract {
+export interface FormErrorContract {
   code: number | null
   message: string
 

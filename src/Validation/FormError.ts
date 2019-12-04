@@ -1,4 +1,4 @@
-import ValidationErrorCollection from './ValidationErrorCollection'
+import {ValidationErrorCollection} from './ValidationErrorCollection'
 
 export class FormError {
   message: string = ''
