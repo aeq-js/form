@@ -20,6 +20,7 @@
     "@aeq/api-laravel": "^0.0.12",
     "@aeq/executors": "^0.0.1",
     "@types/clone": "^0.1.30",
-    "clone": "^2.1.2"
+    "clone": "^2.1.2",
+    "tslib": "^1.10.0"
   }
 }
