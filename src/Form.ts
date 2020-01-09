@@ -14,6 +14,7 @@ export class Form<T = any> {
   private snapshot: any = null
   private error: FormError = new FormError()
   private _resetOnSuccess: boolean = false
+  private _dontFetch: boolean = false
   onError: (error: FormError) => void = () => {}
 
   constructor (handler: Handler, data: T, config?: Config) {
@@ -124,12 +125,21 @@ export class Form<T = any> {
     this._resetOnSuccess = true
     return this
   }
+  noFetch () {
+    this._dontFetch = true
+    return this
+  }
 
   async run (...args: any): Promise<any> {
     try {
       this.clearErrors()
       const result = await this.command.run(this.data, ...args)
-      if (this._resetOnSuccess) this.restoreFromSnapshot()
+      if(!this._dontFetch){
+        this.data = result
+      }
+      if (this._resetOnSuccess) {
+        this.restoreFromSnapshot()
+      }
       this.saveSnapshot()
       return result
     } catch (e) {
@@ -144,7 +154,6 @@ export class Form<T = any> {
   }
 
   private restoreFromSnapshot () {
-    console.log('RESTORE')
     if (this.snapshot) this.data = clone(this.snapshot)
   }
 }
