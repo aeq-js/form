@@ -12,7 +12,7 @@ export class Form<T = any> {
   private command: CommandContract
   public data: T
   private snapshot: any = null
-  private error: FormError = new FormError()
+  public error: FormError = new FormError()
   private _resetOnSuccess: boolean = false
   private _dontFetch: boolean = false
   onError: (error: FormError) => void = () => {}
