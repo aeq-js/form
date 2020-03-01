@@ -1,6 +1,6 @@
 {
   "name": "@aeq/form",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Object for working with frontend forms",
   "main": "index.ts",
   "scripts": {
