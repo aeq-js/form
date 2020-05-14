@@ -9,9 +9,14 @@ export class ValidationErrorCollection {
     Object.assign(this, data)
   }
 
-  getFor (field: string): string | string[] {
-    const validationError = this.errors.find(
-      error => error.key === field || error.key === `${field}_id` || error.key.match(field))
+  getFor (field: string, regexp: boolean = false): string | string[] {
+    let validationError: string|undefined
+    if(regexp){
+      validationError = this.errors.find(error => error.key.match(field))
+    } else {
+      validationError = this.errors.find(
+        error => error.key === field || error.key === `${field}_id`)
+    }
     return validationError ? validationError.value : []
   }
 

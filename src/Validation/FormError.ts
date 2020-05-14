@@ -38,12 +38,12 @@ export class FormError {
     return this.data.hasError
   }
 
-  getErrors (key: string): string | string[] {
-    return this.data.getFor(key)
+  getErrors (key: string, regexp = false): string | string[] {
+    return this.data.getFor(key, regexp)
   }
 
-  getError (key: string): string | string {
-    const errors = this.getErrors(key)
+  getError (key: string, regexp = false): string | string {
+    const errors = this.getErrors(key, regexp)
     return errors ? errors[0] : ''
   }
 

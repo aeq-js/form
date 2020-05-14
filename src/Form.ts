@@ -1,7 +1,7 @@
 import { CommandContract } from './CommandContract'
 import { HoldExecutor } from '@aeq/executors'
 import { FormError } from './Validation/FormError'
-import {ValidationErrorCollection} from './Validation/ValidationErrorCollection'
+import { ValidationErrorCollection } from './Validation/ValidationErrorCollection'
 import clone from 'clone'
 
 type MapErrorHandler = (e: any) => FormError
@@ -86,12 +86,12 @@ export class Form<T = any> {
     this.error.clear(key)
   }
 
-  getError (key: string): string {
-    return this.getErrors(key)[0] || ''
+  getError (key: string, regexp = false): string {
+    return this.getErrors(key, regexp)[0] || ''
   }
 
-  getErrors (key: string): string[] {
-    const error = this.error.getError(key)
+  getErrors (key: string, regexp = false): string[] {
+    const error = this.error.getError(key, regexp)
     if (typeof error === 'string') return [error]
     if (!error) return []
     return error
@@ -125,6 +125,7 @@ export class Form<T = any> {
     this._resetOnSuccess = true
     return this
   }
+
   noFetch () {
     this._dontFetch = true
     return this
@@ -134,7 +135,7 @@ export class Form<T = any> {
     try {
       this.clearErrors()
       const result = await this.command.run(this.data, ...args)
-      if(!this._dontFetch){
+      if (!this._dontFetch) {
         this.data = result
       }
       if (this._resetOnSuccess) {
