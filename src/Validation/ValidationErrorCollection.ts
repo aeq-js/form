@@ -11,7 +11,7 @@ export class ValidationErrorCollection {
 
   getFor (field: string): string | string[] {
     const validationError = this.errors.find(
-      error => error.key === field || error.key === `${field}_id`)
+      error => error.key === field || error.key === `${field}_id` || error.key.match(field))
     return validationError ? validationError.value : []
   }
 
