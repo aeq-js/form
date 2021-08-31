@@ -1,4 +1,4 @@
-import { CommandContract } from './CommandContract'
+import type { CommandContract } from './CommandContract'
 import { HoldExecutor } from '@aeq/executors'
 import { FormError } from './Validation/FormError'
 import { ValidationErrorCollection } from './Validation/ValidationErrorCollection'
@@ -145,7 +145,7 @@ export class Form<T = any> {
       return result
     } catch (e) {
       this.error = this.mapError(e)
-      this.onError(this.error)
+      this.onError(this.error) // Handle 504 status, when something with api
       throw e
     }
   }

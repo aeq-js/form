@@ -10,7 +10,7 @@ export class ValidationErrorCollection {
   }
 
   getFor (field: string, regexp: boolean = false): string | string[] {
-    let validationError: string|undefined
+    let validationError: string|undefined|PropertyError
     if(regexp){
       validationError = this.errors.find(error => error.key.match(field))
     } else {
